@@ -11,3 +11,4 @@ storage/*.key
 .env
 Homestead.yaml
 Homestead.json
+docker-compose.yaml
