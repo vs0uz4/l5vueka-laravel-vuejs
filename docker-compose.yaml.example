@@ -97,6 +97,11 @@ services:
       - sandbox-local:/home/ambientum/.local
       - sandbox-yarn:/home/ambientum/.yarn
       - sandbox-npm:/home/ambientum/.npm
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    links:
+      - app
 
 networks:
   sandbox_net:
