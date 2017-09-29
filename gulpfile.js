@@ -11,5 +11,5 @@ elixir((mix) => {
     /**
      *  Building Javascript files
      */
-    // mix.webpack('app.js');
+    mix.webpack('app.js');
 });
