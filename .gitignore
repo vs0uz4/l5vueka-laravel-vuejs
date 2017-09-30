@@ -12,3 +12,5 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 docker-compose.yaml
+.phpstorm.meta.php
+_ide_helper.php
