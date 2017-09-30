@@ -38,8 +38,13 @@ elixir((mix) => {
      *  Syncing files in Browser
      */
     mix.browserSync({
+        files: [
+            elixir.config.appPath + '/**/*.php',
+            elixir.config.get('public.css.outputFolder') + '/**/*.css',
+            elixir.config.get('public.versioning.buildFolder') + '/rev-manifest.json',
+            'resources/views/**/*.php'
+        ],
         proxy: 'app:8080',
         open: false,
     });
-
 });
