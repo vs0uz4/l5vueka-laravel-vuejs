@@ -1,4 +1,15 @@
 
 window.jQuery = window.$ = require('jquery')
 
-console.log('jQuery Adicionado com Sucesso!');
+require('bootstrap-sass')
+
+import Vue from 'vue'
+
+import PrimeiroComponente from './app/components/primeiro-componente.vue'
+
+new Vue({
+    el: '#app',
+    components: {
+        PrimeiroComponente
+    }
+})
