@@ -26,9 +26,20 @@ class UsersController extends Controller
         return redirect()->route('user.index')->with('success', 'Usuário Cadastrado com Sucesso!');
     }
 
-    public function update()
+    public function update($id)
     {
+        $input = \Request::only('name', 'email', 'password');
 
+        $user = User::find($id);
+        $user->name = $input['name'];
+        $user->email = $input['email'];
+
+        if (!empty($input['password'])) {
+            $user->password = bcrypt($input['password']);
+        }
+        $user->save();
+
+        return redirect()->route('user.index')->with('success', 'Usuário Atualizado com Sucesso!');
     }
 
     public function remove()

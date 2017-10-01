@@ -1,5 +1,6 @@
 <script>
     import moment from 'moment'
+    import bus from '../utils/events/bus'
 
     export default {
         props: ['list'],
@@ -38,7 +39,13 @@
             },
             formatDate (date) {
                 return moment(date).format('DD/MM/YYYY')
-            }
+            },
+            edit (user) {
+                bus.$emit('open-form', { user: user})
+            },
+            remove (id) {
+
+            },
         }
     }
 </script>
@@ -64,7 +71,7 @@
             </thead>
             <tbody v-for="user in users">
             <tr>
-                <td class="text-center">
+                <td width="2%" nowrap>
                     <a href="#" @click.prevent="toggle(user.id)">
                         <i class="fa fa-fw" :class="{
                                     'fa-plus-circle red'  : !details.includes(user.id),
@@ -74,10 +81,10 @@
                 </td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
-                <td class="text-center">{{ formatDate(user.created_at) }}</td>
-                <td class="text-center">
-                    <a href="#"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></a>
+                <td width="12%" class="text-center" nowrap>{{ formatDate(user.created_at) }}</td>
+                <td width="1%" class="text-center" nowrap>
+                    <a href="#" @click.prevent="edit(user)"><i class="fa fa-fw fa-pencil" aria-hidden="true"></i></a>
+                    <a href="#" @click.prevent="remove(user.id)"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></a>
                 </td>
             </tr>
             <tr v-show="details.includes(user.id)">
