@@ -11,11 +11,7 @@
 </head>
 <body>
     <div class="container" id="app">
-        {{--<h1>Gerenciamento de Usuários</h1>
-        <div class="well">
-            {{ $users }}
-        </div>--}}
-        <vd-users list="{{ $users }}"></vd-users>
+        <vd-users success="{{ Session::get('success') }}" token="{{ csrf_token() }}" list="{{ $users }}"></vd-users>
     </div>
 
 <script src="{{ elixir('js/app.js') }}"></script>
