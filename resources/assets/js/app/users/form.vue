@@ -8,16 +8,14 @@
                     id: 0,
                     name: '',
                     email: '',
-                    password: '',
                     created_at: '',
-                    updated_at: '',
-                }
+                    updated_at: ''
+                },
+                modalTitle : '',
+                isEditing: false,
             }
         },
         computed: {
-            isEditing () {
-                return this.user.id !== 0
-            },
             action () {
                 if (this.isEditing) {
                     return `/usuarios/atualizar/${this.user.id}`
@@ -30,20 +28,26 @@
             const userFormModal = jQuery(this.$refs.userFormModal)
 
             bus.$on('open-form', (obj) => {
-                if (obj !== undefined){
+                if (obj.user !== undefined){
+                    this.isEditing = true
                     this.user = obj.user
+                    this.modalTitle = obj.title
+                } else {
+                    this.isEditing = false
+                    this.modalTitle = obj.title
                 }
 
                 userFormModal.modal('show')
             })
 
             userFormModal.on('hidden.bs.modal', () => {
+                this.isEditing = false
                 this.user.id = 0
                 this.user.name = ''
                 this.user.email = ''
-                this.user.password = ''
                 this.user.created_at = ''
                 this.user.updated_at = ''
+                this.modalTitle = ''
             })
         }
     }
@@ -59,7 +63,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Criar Novo Usuário</h4>
+                        <h4 class="modal-title"><i class="fa fa-fw fa-user"></i>{{ modalTitle }}</h4>
                     </div>
                     <div class="modal-body">
                         <form ref="userForm" method="post" :action="action">

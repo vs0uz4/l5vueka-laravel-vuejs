@@ -13,6 +13,9 @@
             users () {
                 return JSON.parse(this.list)
             },
+            hasUsers () {
+                return this.users.length > 0
+            },
         },
         methods: {
             toggle (id) {
@@ -41,10 +44,14 @@
                 return moment(date).format('DD/MM/YYYY')
             },
             edit (user) {
-                bus.$emit('open-form', { user: user})
+                bus.$emit('open-form', { user: user, title: 'Editar Usuário'})
             },
             remove (id) {
+                const confirm = window.confirm('Tem Certeza da Exclusão?')
 
+                if (confirm) {
+                    window.location = `usuarios/remover/${id}`
+                }
             },
         }
     }
@@ -52,7 +59,10 @@
 
 <template>
     <div>
-        <table class="table table-bordered table-striped">
+        <h5 v-show="!hasUsers">
+            Ainda Não Há Usuários Cadastrados.
+        </h5>
+        <table class="table table-bordered table-striped" v-show="hasUsers">
             <thead>
             <tr>
                 <th class="text-center">
@@ -89,7 +99,11 @@
             </tr>
             <tr v-show="details.includes(user.id)">
                 <td colspan="5">
-                    <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i>Placeholder para Endereço
+                    <div class="row col-md-6" v-for="address in user.addresses">
+                        <div class="address">
+                            <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ address.street }}, {{ address.number }} - {{ address.city }}, {{ address.state }}
+                        </div>
+                    </div>
                 </td>
             </tr>
             </tbody>
@@ -98,6 +112,13 @@
 </template>
 
 <style>
+    .address {
+        padding: 5px;
+        margin: 5px 5px 5px 0;
+        background-color: #f9f7ee;
+        border: 1px solid #f3ede5;
+        border-radius: 5px;
+    }
     .green {
         color: red;
     }

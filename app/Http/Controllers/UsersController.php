@@ -9,7 +9,8 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with('addresses')->get();
+
         return view('users.index')->with(compact('users'));
     }
 
@@ -42,8 +43,11 @@ class UsersController extends Controller
         return redirect()->route('user.index')->with('success', 'Usuário Atualizado com Sucesso!');
     }
 
-    public function remove()
+    public function remove($id)
     {
+        $user = User::find($id);
+        $user->delete();
 
+        return redirect()->route('user.index')->with('success', 'Usuário Removido com Sucesso!');
     }
 }
