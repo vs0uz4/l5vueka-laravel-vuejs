@@ -10,7 +10,6 @@ class ApiController extends Controller
     {
         $user = User::find($userId);
         $addresses = $user->addresses;
-        sleep(2);
 
         return response()->json(['addresses' => $addresses], 200);
     }
