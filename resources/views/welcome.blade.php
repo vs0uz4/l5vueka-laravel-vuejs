@@ -14,7 +14,7 @@
         <h1>
             <i class="fa fa-fw fa-github"></i>Curso Laravel 5.3 e Vue.Js 2.0
         </h1>
-        <primeiro-componente></primeiro-componente>
+        <vd-menu></vd-menu>
     </div>
 
     <script src="{{ elixir('js/app.js') }}"></script>
