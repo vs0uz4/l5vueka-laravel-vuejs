@@ -21,6 +21,11 @@ elixir((mix) => {
     mix.copy('node_modules/font-awesome/fonts', 'public/build/fonts');
 
     /**
+     *  Coping images of menu cards for public/imgs path
+     */
+    mix.copy('resources/assets/imgs', 'public/imgs');
+
+    /**
      *  Building Javascript files
      */
     mix.webpack('app.js');
