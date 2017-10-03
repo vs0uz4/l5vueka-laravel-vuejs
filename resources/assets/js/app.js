@@ -9,7 +9,11 @@ import axios from 'axios'
 import VdMenu from './app/menu/main.vue'
 import VdUsers from './app/users/main.vue'
 
-Vue.prototype.$http = axios
+const http = axios.create({
+    baseURL: 'http://localhost/api/'
+})
+
+Vue.prototype.$http = http
 
 new Vue({
     el: '#app',

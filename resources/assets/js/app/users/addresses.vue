@@ -11,7 +11,7 @@
                 if (this.userid === obj.userid && this.addresses.length === 0) {
                     this.isSearching = true
                     this.$http
-                        .get(`http://localhost/api/endereco/${obj.userid}`)
+                        .get(`endereco/${obj.userid}`)
                         .then(res => {
                             this.addresses = res.data.addresses
                             this.isSearching = false
