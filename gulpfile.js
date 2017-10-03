@@ -42,7 +42,8 @@ elixir((mix) => {
             elixir.config.appPath + '/**/*.php',
             elixir.config.get('public.css.outputFolder') + '/**/*.css',
             elixir.config.get('public.versioning.buildFolder') + '/rev-manifest.json',
-            'resources/views/**/*.php'
+            'resources/assets/views/**/*.php',
+            'resources/assets/js/**/*.vue'
         ],
         proxy: 'app:8080',
         open: false,
