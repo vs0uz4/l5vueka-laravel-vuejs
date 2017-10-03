@@ -10,7 +10,7 @@
         },
         methods: {
             form (){
-                bus.$emit('open-form', { title: 'Criar Novo Usuário' })
+                bus.$emit('open-form')
             }
         }
     }

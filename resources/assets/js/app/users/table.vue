@@ -34,7 +34,7 @@
                     this.details = []
                 } else {
                     this.details = this.users.map(user => {
-                        bus.$emit('get-addresses', {userid: user.id})
+                        bus.$emit('get-addresses', { userid: user.id })
                         return user.id
                     })
                 }
@@ -45,14 +45,14 @@
                     this.details.splice(index, 1)
                 } else {
                     this.details.push(id)
-                    bus.$emit('get-addresses', {userid: id})
+                    bus.$emit('get-addresses', { userid: id })
                 }
             },
             formatDate (date) {
                 return moment(date).format('DD/MM/YYYY')
             },
             edit (user) {
-                bus.$emit('open-form', { user: user, title: 'Editar Usuário'})
+                bus.$emit('open-form', { user: user })
             },
             remove (id) {
                 const confirm = window.confirm('Tem Certeza da Exclusão?')
