@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\User;
 
-class ApiController extends Controller
+class AddressesController extends Controller
 {
-    public function address($userId)
+    public function index($userId)
     {
         $user = User::find($userId);
         $addresses = $user->addresses;
