@@ -199,3 +199,26 @@ docker-compose exec dev gulp
 
 ## Sugestão
 Caso necessite testar chamadas a API, sugiro que utilize o `Postman` para testar suas chamadas. [https://www.getpostman.com/](https://www.getpostman.com/).
+
+## Telas
+
+### Tela Inicial
+![png](readme_imgs/index.png)
+
+### Usuários
+![png](readme_imgs/usuarios.png)
+
+### Criar Usuário 
+![png](readme_imgs/usuarios_new.png)
+
+### Alterar Usuário 
+![png](readme_imgs/usuarios_edit.png)
+
+### Remover Usuários (Alerta de Remoção)
+![png](readme_imgs/usuarios_delete.png)
+
+### Endereços do Usuário
+![png](readme_imgs/usuarios_addresses.png)
+
+## TODO
+Desenvolver funcionalidade de CRUD completo para os endereços dos usuários.
